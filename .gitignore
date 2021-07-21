@@ -1,3 +1,10 @@
+# Files containing passwords
+env.sh
+config.py
+
+# Emacs files
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -5,12 +5,10 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Some of this might be best in a constants.py file and read here and in app.py
-TABLE_NAME = 'pets'
-INDEX_COLUMN = 'id'
-SOURCE_FILE = "sqlite:///etl/pets.sqlite"
-SOURCE_SQL = f"SELECT * FROM {TABLE_NAME};"
-
-CSV_EXAMPLE_FILE = ''
+TABLE_NAME = 'monthly_house_supply'
+INDEX_COLUMN = 'date'
+#iterate later
+SOURCE_FILE = 'etl/monthly_house_supply.csv'
 
 # (https://help.heroku.com/ZKNTJQSK/
 # why-is-sqlalchemy-1-4-x-not-connecting-to-heroku-postgres)
@@ -19,20 +17,9 @@ TARGET_DATABASE_URL = (
     .replace('postgres://', 'postgresql://', 1)
     )
 
-
-# Read source file (this example happens to be .sqlite, but CSV is fine too)
-def read_source():
-    source_engine = create_engine(SOURCE_FILE)
-    source_conn = source_engine.connect()
-    source_df = pd.read_sql(TABLE_NAME, source_conn, index_col=INDEX_COLUMN)
+def read_source_csv():
+    source_df = pd.read_csv(SOURCE_FILE, index_col=INDEX_COLUMN)
     return source_df
-
-
-# EXAMPLE: CSV is even simpler
-def read_source_csv_example():
-    source_df = pd.read_csv(CSV_EXAMPLE_FILE)
-    return source_df
-
 
 # Create the table
 def write_target(source_df):
@@ -46,6 +33,15 @@ def write_target(source_df):
         f'ALTER TABLE {TABLE_NAME} ADD PRIMARY KEY ({INDEX_COLUMN});')
 
 
+# Read source file (this example happens to be .sqlite, but CSV is fine too)
+"""def read_source():
+    source_engine = create_engine(SOURCE_FILE)
+    source_conn = source_engine.connect()
+    source_df = pd.read_csv(SOURCE_FILE)
+    return source_df"""
+
 if __name__ == '__main__':
-    source_data = read_source()
+    source_data = read_source_csv()
     write_target(source_data)
+
+    

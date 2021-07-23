@@ -22,7 +22,7 @@ app = Flask(__name__)
 #################################################
 # (https://help.heroku.com/ZKNTJQSK/
 # why-is-sqlalchemy-1-4-x-not-connecting-to-heroku-postgres)
-"""pp.config['SQLALCHEMY_DATABASE_URI'] = (
+app.config['SQLALCHEMY_DATABASE_URI'] = (
     os.environ.get('DATABASE_URL')
     .replace('postgres://', 'postgresql://', 1)
     )
@@ -31,7 +31,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from .models import Pet"""
+#from .models import Pet
 
 SELECT * FROM GroupProject2_Housing.average_home_price
 

@@ -12,10 +12,47 @@ DATA_TABLES = [
         'INDEX_COLUMN': 'date',
      },
     {
-        'SOURCE_FILE': 'etl/test_file_2.csv',
-        'TABLE_NAME': 'test_data_2',
-        'INDEX_COLUMN': 'test_date',
+        'SOURCE_FILE': 'etl/homeownership_rate.csv',
+        'TABLE_NAME': 'homeownership_rate',
+        'INDEX_COLUMN': 'date',
      },
+    {
+        'SOURCE_FILE': 'etl/home_units.csv',
+        'TABLE_NAME': 'home_units',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/house_permits.csv',
+        'TABLE_NAME': 'house_permits',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/average_home_price.csv',
+        'TABLE_NAME': 'average_home_price',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/steel_q_pct_change.csv',
+        'TABLE_NAME': 'steel_q_pct_change',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/lumber_q_pct_change.csv',
+        'TABLE_NAME': 'lumber_q_pct_change',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/new_2020.csv',
+        'TABLE_NAME': 'new_2020',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/new_2021.csv',
+        'TABLE_NAME': 'new_2021',
+        'INDEX_COLUMN': 'date',
+     },
+]
+]
 ]
 
 # (https://help.heroku.com/ZKNTJQSK/

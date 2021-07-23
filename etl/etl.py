@@ -1,16 +1,22 @@
 # Example Template
-import os
+iimport os
 
 import pandas as pd
 from sqlalchemy import create_engine
 
 # Some of this might be best in a constants.py file and read here and in app.py
-TABLE_NAME = 'pets'
-INDEX_COLUMN = 'id'
-SOURCE_FILE = "sqlite:///etl/pets.sqlite"
-SOURCE_SQL = f"SELECT * FROM {TABLE_NAME};"
-
-CSV_EXAMPLE_FILE = ''
+DATA_TABLES = [
+    {
+        'SOURCE_FILE': 'etl/monthly_house_supply.csv',
+        'TABLE_NAME': 'monthly_house_supply',
+        'INDEX_COLUMN': 'date',
+     },
+    {
+        'SOURCE_FILE': 'etl/test_file_2.csv',
+        'TABLE_NAME': 'test_data_2',
+        'INDEX_COLUMN': 'test_date',
+     },
+]
 
 # (https://help.heroku.com/ZKNTJQSK/
 # why-is-sqlalchemy-1-4-x-not-connecting-to-heroku-postgres)
@@ -20,32 +26,23 @@ TARGET_DATABASE_URL = (
     )
 
 
-# Read source file (this example happens to be .sqlite, but CSV is fine too)
-def read_source():
-    source_engine = create_engine(SOURCE_FILE)
-    source_conn = source_engine.connect()
-    source_df = pd.read_sql(TABLE_NAME, source_conn, index_col=INDEX_COLUMN)
+def read_source_csv(source_file, index_column):
+    source_df = pd.read_csv(source_file, index_col=index_column)
     return source_df
 
 
-# EXAMPLE: CSV is even simpler
-def read_source_csv_example():
-    source_df = pd.read_csv(CSV_EXAMPLE_FILE)
-    return source_df
-
-
-# Create the table
-def write_target(source_df):
+def write_target(source_df, table_name, index_column):
     target_engine = create_engine(TARGET_DATABASE_URL)
     target_conn = target_engine.connect()
-    source_df.to_sql(TABLE_NAME, target_conn, if_exists='replace')
+    source_df.to_sql(table_name, target_conn, if_exists='replace')
 
     # sqlalchemy will not detect table without PK. This seems to be the best
     # solution (https://stackoverflow.com/q/50469391)
     target_engine.execute(
-        f'ALTER TABLE {TABLE_NAME} ADD PRIMARY KEY ({INDEX_COLUMN});')
+        f'ALTER TABLE {table_name} ADD PRIMARY KEY ({index_column});')
 
 
 if __name__ == '__main__':
-    source_data = read_source()
-    write_target(source_data)
+    for t in DATA_TABLES:
+        source_data = read_source_csv(t['SOURCE_FILE'], t['INDEX_COLUMN'])
+        write_target(source_data, t['TABLE_NAME'], t['INDEX_COLUMN'])

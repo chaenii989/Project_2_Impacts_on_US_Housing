@@ -160,7 +160,7 @@ def supply():
     return jsonify(home_supply)
 
 
-@app.route("/api/interst_rate_20202")
+@app.route("/api/interst_rate_2020")
 def rates2020():
     results = db.session.query(new_2020.date, new2020.ten_y_2020, new2020.twenty_y_2020, new2020.thirty_y_2020).all()
 

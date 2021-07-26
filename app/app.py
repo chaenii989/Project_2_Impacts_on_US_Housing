@@ -32,6 +32,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+average_home_price = Base.classes.average_home_price
+home_units = Base.classes.home_units
+homeownership_rates= Base.classes.homeownership_rates
+house_permits= Base.classes.house_permits
+monthly_house_supply= Base.monthly_house_supply
+new_2020= Base.classes.new_2020
+new_2021= Base.classes.new_2021
 
 
 
@@ -114,7 +121,7 @@ def o_rates():
 
 @app.route("/api/house_permits")
 def permited():
-    results = db.session.query(hhouse_permits.date, house_permits.new_permits_thousands).all()
+    results = db.session.query(house_permits.date, house_permits.new_permits_thousands).all()
 
     date = [result[0] for result in results]
     new_permits = [result[1] for result in results]
@@ -170,7 +177,7 @@ def rates2020():
     thirty_y_2020 = [result[3] for result in results]
     
 
-    interset_2020 = [{
+    interest_2020 = [{
         
         "Date": date,
         "Ten Year": ten_y_2020,
@@ -185,35 +192,12 @@ def rates2020():
         }
     }]
 
-    return jsonify(interset_2020)
+    return jsonify(interest_2020)
 
-
-@app.route("/api/monthly_house_supply")
-def rates2021():
-    results = db.session.query(monthly_house_supply.date, monthly_house_supply.ratio_for_sale_to_sold).all()
-
-    date = [result[0] for result in results]
-    sale_sold_ratio = [result[1] for result in results]
-    
-
-    home_supply = [{
-        
-        "Date": date,
-        "Ratio of Sale/Sold": sale_sold_ratio,
-        "marker": {
-            "size": 15,
-            "line": {
-                "color": "rgb(8,8,8)",
-                "width": 1
-            },
-        }
-    }]
-
-    return jsonify(home_supply)
 
 
 @app.route("/api/interst_rate_2021")
-def h_unit():
+def rates2021():
     results = db.session.query(new_20201.date, new2021.ten_y_2021, new2021.twenty_y_2021, new2021.thirty_y_2021).all()
 
     date = [result[0] for result in results]
@@ -222,7 +206,7 @@ def h_unit():
     thirty_y_2021 = [result[3] for result in results]
     
 
-    interset_2021 = [{
+    interest_2021 = [{
         
         "Date": date,
         "Ten Year": ten_y_2020,
@@ -237,7 +221,7 @@ def h_unit():
         }
     }]
 
-    return jsonify(interset_2021)
+    return jsonify(interest_2021)
 
 
 #################################################

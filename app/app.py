@@ -1,16 +1,21 @@
 # Example Template
-
-# import necessary libraries
 import os
+# import necessary libraries
 from flask import (
     Flask,
     render_template,
     jsonify,
     request,
     redirect)
-
-
 from flask_sqlalchemy import SQLAlchemy
+
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+from config import username, password, host, port, database
+
+import psycopg2
 
 
 #################################################
@@ -31,6 +36,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+engine = create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
+
+
+Base = automap_base()
+
+Base.prepare(engine, reflect=True)
 
 average_home_price = Base.classes.average_home_price
 home_units = Base.classes.home_units

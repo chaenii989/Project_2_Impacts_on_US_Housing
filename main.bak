@@ -42,9 +42,9 @@
     "\n",
     "home_units_df = pd.read_csv(r'https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/units_completed_COMPUTNSA.csv')\n",
     "\n",
-    "url1 = (r\"https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/2020_daily_treasury.csv\")\n",
+    "url1 = (r\"https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/2020_daily_treasury.csv\"\n",
     "\n",
-    "url2 = (r\"https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/2021_daily_treasary.csv\")\n",
+    "url2 = 'https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/2021_daily_treasary.csv'\n",
     "\n",
     "lumber_steel_df = pd.read_csv(r\"https://raw.githubusercontent.com/chaenii989/Project_2_Impacts_on_US_Housing/main/resources/lumber_steel_percent_change.csv\")"
    ]
@@ -964,7 +964,29 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Create tables (csv)\n",
+    "monthly_house_supply_df.to_csv('etl/monthly_house_supply.csv', index=False)\n",
+    "#homeownership_rate_df.to_csv(name='homeownership_rate', con=engine, if_exists='replace', index=False)\n",
+    "#home_units_df.to_csv(name='home_units', con=engine, if_exists='replace', index=False)\n",
+    "#house_permits_df.to_csv(name='house_permits', con=engine, if_exists='replace', index=False)\n",
+    "#average_home_price_df.to_csv(name='average_home_price', con=engine, if_exists='replace', index=False)\n",
+    "#Q_steel_percent_df.to_csv(name='steel_q_pct_change', con=engine, if_exists='replace', index=False)\n",
+    "#lumber_percent_df.to_csv(name='lumber_q_pct_change', con=engine, if_exists='replace', index=False)\n",
+    "#new_2020_df.to_csv(name='new_2020', con=engine, if_exists='replace', index=False)\n",
+    "#new_2021_df.to_csv(name='new_2021', con=engine, if_exists='replace', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+=======
    "execution_count": 12,
+>>>>>>> main
    "metadata": {
     "id": "YdY4yz09GpPh"
    },
@@ -1033,7 +1055,11 @@
        "4  2021-01-01                65.6"
       ]
      },
+<<<<<<< HEAD
+     "execution_count": 13,
+=======
      "execution_count": 12,
+>>>>>>> main
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1044,7 +1070,11 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 14,
+=======
    "execution_count": 13,
+>>>>>>> main
    "metadata": {
     "id": "9sHfchyKpZQS"
    },

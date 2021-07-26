@@ -2,6 +2,7 @@
 
 # import necessary libraries
 import os
+
 from flask import (
     Flask,
     render_template,
@@ -9,8 +10,14 @@ from flask import (
     request,
     redirect)
 from flask_sqlalchemy import SQLAlchemy
-import psycopg2
 
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+from config import username, password, host, port, database
+
+import psycopg2
 
 #################################################
 # Flask Setup
@@ -31,28 +38,42 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+engine = create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
+
+# reflect an existing database into a new model
+Base = automap_base()
+# reflect the tables
+Base.prepare(engine, reflect=True)
+
+# Save references to each table
+Lumber_steel = Base.classes.lumber_steel
+
+# Create our session (link) from Python to the DB
+session = Session(engine)
+
 #from .models import Pet
 
-SELECT * FROM GroupProject2_Housing.average_home_price
+#use this
+#postgresql://postgres:Learning2323\!@localhost:5432/GroupProject2_Housing
+#SELECT * FROM GroupProject2_Housing.lumber_steel
 
 #################################################
 # API Routes (start with '/api/')
 #################################################
-@app.route("/api/pals")
-def pals():
-    results = db.session.query(Pet.name, Pet.lat, Pet.lon).all()
+@app.route("/api/lumber_steel")
+def commodities():
+    # Query the database and send the jsonified results
+    results = db.session.query(Lumber_steel.date, Lumber_steel.lumber_prc_change, Lumber_steel.steel_prc_change).all()
 
-    hover_text = [result[0] for result in results]
-    lat = [result[1] for result in results]
-    lon = [result[2] for result in results]
+    date = [result[0] for result in results]
+    lumber_prc_change = [result[1] for result in results]
+    steel_prc_change = [result[2] for result in results]
 
-    pet_data = [{
-        "type": "scattergeo",
-        "locationmode": "USA-states",
-        "lat": lat,
-        "lon": lon,
-        "text": hover_text,
-        "hoverinfo": "text",
+    commodity_data = [{
+        
+        "Date": date,
+        "Lumber Percent Change": lumber_prc_change,
+        "Steel Perfcent Change": steel_prc_change,
         "marker": {
             "size": 15,
             "line": {
@@ -61,21 +82,18 @@ def pals():
             },
         }
     }]
-
-    return jsonify(pet_data)
-
-
+    return jsonify(results)
 #################################################
 # Fontend Routes
 #################################################
 # create route that renders index.html template
-@app.route("/")
-def home():
-    return render_template("index.html")
+#@app.route("/")
+#def home():
+    #return render_template("index.html")
 
 
 # Query the database and send the jsonified results
-@app.route("/send", methods=["GET", "POST"])
+"""@app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "POST":
         name = request.form["petName"]
@@ -87,7 +105,7 @@ def send():
         db.session.commit()
         return redirect("/", code=302)
 
-    return render_template("form.html")
+    return render_template("form.html")"""
 
 
 if __name__ == "__main__":

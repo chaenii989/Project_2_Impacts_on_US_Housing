@@ -53,10 +53,6 @@ session = Session(engine)
 
 #from .models import Pet
 
-#use this
-#postgresql://postgres:Learning2323\!@localhost:5432/GroupProject2_Housing
-#SELECT * FROM GroupProject2_Housing.lumber_steel
-
 #################################################
 # API Routes (start with '/api/')
 #################################################

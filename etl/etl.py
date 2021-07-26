@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 # Some of this might be best in a constants.py file and read here and in app.py
 DATA_TABLES = [
     {
-        'SOURCE_FILE': 'etl/resources/lumber_steel_percent_change.csv',
+        'SOURCE_FILE': 'etl/lumber_steel_percent_change.csv',
         'TABLE_NAME': 'lumber_steel',
         'INDEX_COLUMN': 'date',
      },

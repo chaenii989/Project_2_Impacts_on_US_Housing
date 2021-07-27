@@ -1,3 +1,5 @@
+// Home price plot
+
 function buildlinePlot() {
 
   const url = "/api/average_housing";

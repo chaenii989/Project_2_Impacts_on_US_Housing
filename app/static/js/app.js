@@ -2,7 +2,7 @@
 
 function buildlinePlot() {
 
-  const url = "/api/average_housing";
+  const url = "/api/average_home_price";
   d3.json(url).then(function(response) {
 
     

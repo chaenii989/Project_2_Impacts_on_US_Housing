@@ -37,25 +37,29 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 engine = create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
-
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 
+
 # Save references to each table
-average_home_price = Base.classes.average_home_price
-home_units = Base.classes.home_units
-homeownership_rates= Base.classes.homeownership_rates
-house_permits= Base.classes.house_permits
-monthly_house_supply= Base.monthly_house_supply
-new_2020= Base.classes.new_2020
-new_2021= Base.classes.new_2021
 Lumber_steel = Base.classes.lumber_steel
+Average_home_price = Base.classes.average_home_price
+#Homeownership_rates= Base.classes.homeownership_rate
+Home_units = Base.classes.home_units
+Monthly_house_supply= Base.classes.monthly_house_supply
+#House_permits = Base.classes.house_permits
+New_2020= Base.classes.new_2020
+New_2021= Base.classes.new_2021
+
 
 # Create our session (link) from Python to the DB
 session = Session(engine)
 
+"""stmt = sqlalchemy.select("*").select_from(Lumber_steel)
+result = session.execute(stmt).fetchall()
+print(result)"""
 #from .models import Pet
 
 #################################################
@@ -87,7 +91,7 @@ def commodities():
 
 @app.route("/api/average_home_price")
 def avg_price():
-    results = db.session.query(average_home_price.date, average_home_price.average_home_price).all()
+    results = db.session.query(Average_home_price.date, Average_home_price.average_home_price).all()
 
     date = [result[0] for result in results]
     average_home_price = [result[1] for result in results]
@@ -108,10 +112,33 @@ def avg_price():
 
     return jsonify(home_price)
 
+"""@app.route("/api/homeownership_rate")
+def o_rates():
+    results = db.session.query(Homeownership_rates.date, Homeownership_rates.homeownership_rate).all()
+
+    date = [result[0] for result in results]
+    home_rate = [result[1] for result in results]
+    
+
+    ownership_rate = [{
+        
+        "Date": date,
+        "Home Ownership Rate": home_rate,
+        "marker": {
+            "size": 15,
+            "line": {
+                "color": "rgb(8,8,8)",
+                "width": 1
+            },
+        }
+    }]
+
+    return jsonify(ownership_rate)
+"""
 
 @app.route("/api/home_units")
 def h_unit():
-    results = db.session.query(home_units.date, home_units.units_constructed_thousands).all()
+    results = db.session.query(Home_units.date, Home_units.units_constructed_thousands).all()
 
     date = [result[0] for result in results]
     units_contructed = [result[1] for result in results]
@@ -132,36 +159,9 @@ def h_unit():
 
     return jsonify(unit_homes)
 
-
-@app.route("/api/homeownership_rates")
-def o_rates():
-    results = db.session.query(homeownership_rates.date, homeownership_rates.homeownership_rate).all()
-
-    date = [result[0] for result in results]
-    home_rate = [result[1] for result in results]
-    
-
-    ownership_rate = [{
-        
-        "Date": date,
-        "Home Ownership Rate": home_rate,
-        "marker": {
-            "size": 15,
-            "line": {
-                "color": "rgb(8,8,8)",
-                "width": 1
-            },
-        }
-    }]
-
-    return jsonify(ownership_rate)
-
-
-
-
-@app.route("/api/house_permits")
+"""@app.route("/api/house_permits")
 def permited():
-    results = db.session.query(house_permits.date, house_permits.new_permits_thousands).all()
+    results = db.session.query(House_permits.date, House_permits.new_permits_thousands).all()
 
     date = [result[0] for result in results]
     new_permits = [result[1] for result in results]
@@ -180,17 +180,16 @@ def permited():
         }
     }]
 
-    return jsonify(permits)
+    return jsonify(permits)"""
 
 
 @app.route("/api/monthly_house_supply")
 def supply():
-    results = db.session.query(monthly_house_supply.date, monthly_house_supply.ratio_for_sale_to_sold).all()
+    results = db.session.query(Monthly_house_supply.date, Monthly_house_supply.ratio_for_sale_to_sold).all()
 
     date = [result[0] for result in results]
     sale_sold_ratio = [result[1] for result in results]
     
-
     home_supply = [{
         
         "Date": date,
@@ -207,9 +206,9 @@ def supply():
     return jsonify(home_supply)
 
 
-@app.route("/api/interst_rate_2020")
+@app.route("/api/interest_rate_2020")
 def rates2020():
-    results = db.session.query(new_2020.date, new2020.ten_y_2020, new2020.twenty_y_2020, new2020.thirty_y_2020).all()
+    results = db.session.query(New_2020.date, New_2020.ten_y_2020, New_2020.twenty_y_2020, New_2020.thirty_y_2020).all()
 
     date = [result[0] for result in results]
     ten_y_2020 = [result[1] for result in results]
@@ -236,9 +235,9 @@ def rates2020():
 
 
 
-@app.route("/api/interst_rate_2021")
+@app.route("/api/interest_rate_2021")
 def rates2021():
-    results = db.session.query(new_20201.date, new2021.ten_y_2021, new2021.twenty_y_2021, new2021.thirty_y_2021).all()
+    results = db.session.query(New_2021.date, New_2021.ten_y_2021, New_2021.twenty_y_2021, New_2021.thirty_y_2021).all()
 
     date = [result[0] for result in results]
     ten_y_2021 = [result[1] for result in results]
@@ -249,9 +248,9 @@ def rates2021():
     interest_2021 = [{
         
         "Date": date,
-        "Ten Year": ten_y_2020,
-        "Twenty Year" : twenty_y_2020,
-        "Thirty Year": thirty_y_2020,
+        "Ten Year": ten_y_2021,
+        "Twenty Year" : twenty_y_2021,
+        "Thirty Year": thirty_y_2021,
         "marker": {
             "size": 15,
             "line": {
@@ -262,7 +261,6 @@ def rates2021():
     }]
 
     return jsonify(interest_2021)
-
 #################################################
 # Fontend Routes
 #################################################
@@ -274,4 +272,4 @@ def rates2021():
 if __name__ == "__main__":
     app.run()
 
-session.close()
+#session.close()

@@ -12,12 +12,12 @@ DATA_TABLES = [
         'TABLE_NAME': 'lumber_steel',
         'INDEX_COLUMN': 'date',
      },
-     {
-        'SOURCE_FILE': 'etl/monthly_house_supply.csv',
-        'TABLE_NAME': 'monthly_house_supply',
+    {
+        'SOURCE_FILE': 'etl/average_home_price.csv',
+        'TABLE_NAME': 'average_home_price',
         'INDEX_COLUMN': 'date',
      },
-    {
+     {
         'SOURCE_FILE': 'etl/homeownership_rate.csv',
         'TABLE_NAME': 'homeownership_rate',
         'INDEX_COLUMN': 'date',
@@ -27,36 +27,22 @@ DATA_TABLES = [
         'TABLE_NAME': 'home_units',
         'INDEX_COLUMN': 'date',
      },
-    {
-        'SOURCE_FILE': 'etl/house_permits.csv',
-        'TABLE_NAME': 'house_permits',
-        'INDEX_COLUMN': 'date',
-     },
-    {
-        'SOURCE_FILE': 'etl/average_home_price.csv',
-        'TABLE_NAME': 'average_home_price',
-        'INDEX_COLUMN': 'date',
-     },
-    {
-        'SOURCE_FILE': 'etl/steel_q_pct_change.csv',
-        'TABLE_NAME': 'steel_q_pct_change',
-        'INDEX_COLUMN': 'date',
-     },
-    {
-        'SOURCE_FILE': 'etl/lumber_q_pct_change.csv',
-        'TABLE_NAME': 'lumber_q_pct_change',
-        'INDEX_COLUMN': 'date',
-     },
-    {
+     {
         'SOURCE_FILE': 'etl/new_2020.csv',
         'TABLE_NAME': 'new_2020',
         'INDEX_COLUMN': 'date',
-     },
-    {
+     }, 
+      {
         'SOURCE_FILE': 'etl/new_2021.csv',
         'TABLE_NAME': 'new_2021',
         'INDEX_COLUMN': 'date',
-     },
+     }, 
+    {
+        'SOURCE_FILE': 'etl/monthly_house_supply.csv',
+        'TABLE_NAME': 'monthly_house_supply',
+        'INDEX_COLUMN': 'date',
+     }
+     
 ]
 
 # (https://help.heroku.com/ZKNTJQSK/
@@ -84,3 +70,16 @@ if __name__ == '__main__':
     for t in DATA_TABLES:
         source_data = read_source_csv(t['SOURCE_FILE'], t['INDEX_COLUMN'])
         write_target(source_data, t['TABLE_NAME'], t['INDEX_COLUMN']) 
+"""
+   
+
+    {
+        'SOURCE_FILE': 'etl/house_permits.csv',
+        'TABLE_NAME': 'house_permits',
+        'INDEX_COLUMN': 'date',
+     }  
+
+    
+    
+    
+   ,"""

@@ -1,6 +1,5 @@
 # Files containing passwords
 env.sh
-config.py
 
 # Emacs files
 *~

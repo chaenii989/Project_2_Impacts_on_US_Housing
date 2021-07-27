@@ -1,6 +1,6 @@
 # Config Python
 username = 'postgres'
-password = 'Learning2323!'
+password = '****'
 host = 'localhost'
 port = '5432'
 database = 'GroupProject2_Housing'

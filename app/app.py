@@ -13,7 +13,6 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from config import username, password, host, port, database
 
 import psycopg2
 
@@ -27,21 +26,19 @@ app = Flask(__name__)
 #################################################
 # (https://help.heroku.com/ZKNTJQSK/
 # why-is-sqlalchemy-1-4-x-not-connecting-to-heroku-postgres)
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    os.environ.get('DATABASE_URL')
-    .replace('postgres://', 'postgresql://', 1)
-    )
+database_url = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://', 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-engine = create_engine(f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}')
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
-
 
 # Save references to each table
 Lumber_steel = Base.classes.lumber_steel

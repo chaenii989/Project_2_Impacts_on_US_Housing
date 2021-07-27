@@ -1,37 +1,28 @@
-/* Example Template */
+function buildlinePlot() {
 
-function buildPlot() {
-
-    /* data route */
-  const url = "/api/pals";
+  const url = "/api/average_housing";
   d3.json(url).then(function(response) {
 
-    console.log(response);
+    
 
-    const data = response;
+    const myData = response;
 
-    const layout = {
-      scope: "usa",
-      title: "Pet Pals",
-      showlegend: false,
-      height: 600,
-            // width: 980,
-      geo: {
-        scope: "usa",
-        projection: {
-          type: "albers usa"
-        },
-        showland: true,
-        landcolor: "rgb(217, 217, 217)",
-        subunitwidth: 1,
-        countrywidth: 1,
-        subunitcolor: "rgb(255,255,255)",
-        countrycolor: "rgb(255,255,255)"
-      }
+    var date = myData.date
+    var average_home_price = myData.average_home_price
+
+    var trace1 = {
+        y: average_home_price,
+        x: date,
+        type: "line",
+        orientation: "h"
     };
 
-    Plotly.newPlot("plot", data, layout);
-  });
+    var layout = {
+        title: "Average Home Price"
+    }
+    var data = [trace1]
+
+    Plotly.newPlot("line", data, layout);
 }
 
-buildPlot();
+buildlinePlot();

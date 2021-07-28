@@ -197,7 +197,7 @@ def supply():
     home_supply = [{
         
         "Date": date,
-        "Ratio of Sale/Sold": sale_sold_ratio,
+        "Ratio_of_Sale_Sold": sale_sold_ratio,
         "marker": {
             "size": 15,
             "line": {

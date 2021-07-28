@@ -5,9 +5,7 @@ function buildlinePlot() {
   const url = "/api/average_home_price";
   d3.json(url).then(function(myData) {
 
-    
-
-    
+   
 
     var date = myData.date
     var average_home_price = myData.average_home_price

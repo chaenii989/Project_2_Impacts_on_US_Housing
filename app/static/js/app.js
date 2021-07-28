@@ -15,8 +15,8 @@ function buildlinePlot() {
     var trace1 = {
         y: average_home_price,
         x: date,
-        type: "line",
-        orientation: "h"
+        type: "line"
+        
     };
 
     var layout = {

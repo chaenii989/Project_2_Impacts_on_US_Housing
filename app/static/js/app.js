@@ -7,10 +7,10 @@ function buildlinePlot() {
 
     
 
-    const myData = response;
+    const response;
 
-    var date = myData.date
-    var average_home_price = myData.average_home_price
+    var date = response.date.toString()
+    var average_home_price = response.average_home_price
 
     var trace1 = {
         y: average_home_price,

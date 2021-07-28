@@ -71,8 +71,8 @@ def commodities():
     commodity_data = [{
         
         "Date": date,
-        "Lumber Percent Change": lumber_prc_change,
-        "Steel Perfcent Change": steel_prc_change,
+        "Lumber_Percent_Change": lumber_prc_change,
+        "Steel_Perfcent_Change": steel_prc_change,
         "marker": {
             "size": 15,
             "line": {
@@ -123,7 +123,7 @@ def o_rates():
     ownership_rate = [{
         
         "Date": date,
-        "Home Ownership Rate": home_rate,
+        "Home_Ownership_Rate": home_rate,
         "marker": {
             "size": 15,
             "line": {
@@ -148,7 +148,7 @@ def h_unit():
     unit_homes = [{
         
         "Date": date,
-        "Home Unites Contructed": units_contructed,
+        "Home_Unites_Contructed": units_contructed,
         "marker": {
             "size": 15,
             "line": {
@@ -173,7 +173,7 @@ def permited():
     permits = [{
         
         "Date": date,
-        "New Home Permits": new_permits,
+        "New_Home_Permits": new_permits,
         "marker": {
             "size": 15,
             "line": {
@@ -225,9 +225,9 @@ def rates2020():
     interest_2020 = [{
         
         "Date": date,
-        "Ten Year": ten_y_2020,
-        "Twenty Year" : twenty_y_2020,
-        "Thirty Year": thirty_y_2020,
+        "Ten_Year": ten_y_2020,
+        "Twenty_Year" : twenty_y_2020,
+        "Thirty_Year": thirty_y_2020,
         "marker": {
             "size": 15,
             "line": {
@@ -256,9 +256,9 @@ def rates2021():
     interest_2021 = [{
         
         "Date": date,
-        "Ten Year": ten_y_2021,
-        "Twenty Year" : twenty_y_2021,
-        "Thirty Year": thirty_y_2021,
+        "Ten_Year": ten_y_2021,
+        "Twenty_Year" : twenty_y_2021,
+        "Thirty_Year": thirty_y_2021,
         "marker": {
             "size": 15,
             "line": {

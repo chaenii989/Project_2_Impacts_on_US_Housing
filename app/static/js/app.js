@@ -25,6 +25,6 @@ function buildlinePlot() {
     var data = [trace1]
 
     Plotly.newPlot("line", data, layout);
-}
+})
 
 buildlinePlot();

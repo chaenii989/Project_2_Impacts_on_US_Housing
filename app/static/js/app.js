@@ -6,9 +6,9 @@ function buildlinePlot() {
   d3.json(url).then(function(myData) {
    console.log(myData);
     
-    var date = myData.Date;
+    var date = myData[0].Date;
     
-    var price = myData.Average_Home_Price;
+    var price = myData[0].Average_Home_Price;
    
 
     var trace1 = {

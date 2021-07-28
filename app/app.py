@@ -98,7 +98,7 @@ def avg_price():
     home_price = [{
         
         "Date": date,
-        "Average Home Price": average_home_price,
+        "Average_Home_Price": average_home_price,
         "marker": {
             "size": 15,
             "line": {

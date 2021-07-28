@@ -26,5 +26,6 @@ function buildlinePlot() {
 
     Plotly.newPlot("line", data, layout);
 })
+};
 
 buildlinePlot();

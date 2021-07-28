@@ -17,6 +17,7 @@ function buildlinePlot() {
     type: "scatter"
     
     }
+    var data = [trace1];
     
 
     var layout = {

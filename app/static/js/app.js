@@ -9,12 +9,12 @@ function buildlinePlot() {
 
     
 
-    var date = myData.date.toString()
+    var date = myData.date
     var average_home_price = myData.average_home_price
 
     var trace1 = {
         y: average_home_price,
-        x: date,
+        x: date.toString(),
         type: "scatter"
         
     };

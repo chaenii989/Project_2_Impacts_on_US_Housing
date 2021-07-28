@@ -41,10 +41,10 @@ Base.prepare(engine, reflect=True)
 # Save references to each table
 Lumber_steel = Base.classes.lumber_steel
 Average_home_price = Base.classes.average_home_price
-#Homeownership_rates= Base.classes.homeownership_rate
+Homeownership_rates= Base.classes.homeownership_rate
 Home_units = Base.classes.home_units
 Monthly_house_supply= Base.classes.monthly_house_supply
-#House_permits = Base.classes.house_permits
+House_permits = Base.classes.house_permits
 New_2020= Base.classes.new_2020
 New_2021= Base.classes.new_2021
 
@@ -72,7 +72,7 @@ def commodities():
         
         "Date": date,
         "Lumber_Percent_Change": lumber_prc_change,
-        "Steel_Perfcent_Change": steel_prc_change,
+        "Steel_Percent_Change": steel_prc_change,
         "marker": {
             "size": 15,
             "line": {

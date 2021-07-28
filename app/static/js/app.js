@@ -14,7 +14,7 @@ function buildlinePlot() {
 
     var trace1 = {
         y: average_home_price,
-        x: date.toString(),
+        x: date,
         type: "scatter"
         
     };

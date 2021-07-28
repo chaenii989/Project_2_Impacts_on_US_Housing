@@ -62,7 +62,7 @@ function buildCommoditiesPlot() {
       var data = [trace1, trace2];
   
       var layout = {
-          title: "Steel & Lumber Percent Change in Price over Time", 
+          title: "Steel & Lumber Percent Change in Price Index over Time", 
       }
       
   

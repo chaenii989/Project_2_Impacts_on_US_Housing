@@ -3,14 +3,14 @@
 function buildlinePlot() {
 
   const url = "/api/average_home_price";
-  d3.json(url).then(function(response) {
+  d3.json(url).then(function(myData) {
 
     
 
-    const response;
+    
 
-    var date = response.date.toString()
-    var average_home_price = response.average_home_price
+    var date = myData.date.toString()
+    var average_home_price = myData.average_home_price
 
     var trace1 = {
         y: average_home_price,

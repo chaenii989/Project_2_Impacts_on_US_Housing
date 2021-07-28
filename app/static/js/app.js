@@ -7,8 +7,8 @@ function buildlinePlot() {
 
    
 
-    var date = myData.date
-    var average_home_price = myData.average_home_price
+    var date = myData.Date
+    var average_home_price = myData.Average_Home_Price
 
     var trace1 = {
         y: average_home_price,

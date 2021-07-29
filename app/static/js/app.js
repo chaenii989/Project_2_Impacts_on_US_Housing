@@ -71,3 +71,36 @@ function buildCommoditiesPlot() {
 };
   
 buildCommoditiesPlot();
+
+//monthly ratio for sales to sold
+
+function buildareaPlot() {
+
+  const url = "/api/monthly_house_supply";
+  d3.json(url).then(function(myData) {
+   console.log(myData);
+    
+    var date = myData[0].Date;
+    
+    var ratio = myData[0].Ratio_of_Sale_Sold;
+   
+
+    var trace1 = {
+    x: date,
+    y: ratio,
+    type: "area"
+    
+    }
+    var data = [trace1];
+    
+
+    var layout = {
+        title: "Ratio for Sales to Sold", 
+    }
+    
+
+    Plotly.newPlot("area", data, layout);
+})
+};
+
+buildareaPlot();

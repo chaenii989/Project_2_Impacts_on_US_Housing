@@ -38,6 +38,7 @@ engine = create_engine(database_url)
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
+
 # Save references to each table
 Lumber_steel = Base.classes.lumber_steel
 Average_home_price = Base.classes.average_home_price

@@ -41,8 +41,12 @@ DATA_TABLES = [
         'SOURCE_FILE': 'etl/monthly_house_supply.csv',
         'TABLE_NAME': 'monthly_house_supply',
         'INDEX_COLUMN': 'date',
-     }
-     
+     },
+    {
+        'SOURCE_FILE': 'etl/house_permits.csv',
+        'TABLE_NAME': 'house_permits',
+        'INDEX_COLUMN': 'date',
+     }  
 ]
 
 # (https://help.heroku.com/ZKNTJQSK/
@@ -70,17 +74,5 @@ if __name__ == '__main__':
     for t in DATA_TABLES:
         source_data = read_source_csv(t['SOURCE_FILE'], t['INDEX_COLUMN'])
         write_target(source_data, t['TABLE_NAME'], t['INDEX_COLUMN']) 
-"""
-   
 
-    {
-        'SOURCE_FILE': 'etl/house_permits.csv',
-        'TABLE_NAME': 'house_permits',
-        'INDEX_COLUMN': 'date',
-     }  
-
-    
-    
-    
-   ,"""
    

@@ -13,7 +13,7 @@ This project analyzes coorelations in the Unite States housing market. The facto
 - Lumber price index
 
 
-We begin by gathering data from csv's from the given sources below. We then transform the data in the ipynb that returns cleaned csv's. The etl file then push the data to a SQL database. Using the app.py the data then is pushed to flask api's. Each api returns a JSON formated dataset. Using the api's we created a app.js file that pushes plots to our html file. This is all done being hosted by Heroku. 
+We begin by gathering data from csv's from the given sources below. We then transform the data in the ipynb that returns cleaned csv's. The etl file then push the data to a SQL database. Using the app.py the data is then pushed to flask api's, one for each csv file. Each api returns a JSON formated dataset. Using the api's we created a app.js file that pushes plots, using functions, to our html file. This is all done being hosted by Heroku. 
 
 Enjoy!
 

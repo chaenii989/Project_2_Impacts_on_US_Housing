@@ -1,6 +1,6 @@
 # Project_2_Impacts_on_US_Housing
 
-
+Link to Google Slides Presentation: https://docs.google.com/presentation/d/1V-759n6RlpJccNcRgu4h8CecujvwI7HVBf6cNoMqmTQ/edit?usp=sharing
 
 Hello! 
 
